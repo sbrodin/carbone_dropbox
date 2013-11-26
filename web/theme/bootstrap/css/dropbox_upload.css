@@ -1,0 +1,22 @@
+h1{
+}
+
+body{
+    font-family:arial;font-size:13px;
+}
+
+.box{
+    background:none repeat scroll 0 0 #F6F6F6;
+    border:1px solid #C3C3C3;
+    margin-left:100px;
+    margin-top:50px;
+    width:860px;
+}
+
+.message{
+    background-color:#FFFFE0;
+    border:1px solid #E6DB55;
+    margin:30px 0 16px 8px;
+    padding:12px;
+    width:774px;
+}

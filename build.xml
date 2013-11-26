@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Carbone" basedir="." default="clean">
+
+    <property name="dir_source" value="." override="false" />
+    <property name="dir_target"   value="/tmp/carbone_bootstrap" override="true" />
+
+    <!-- Fileset global listant les fichiers a prendre en compte    -->
+        
+    <fileset dir="${dir_source}" id="file_source">
+        <exclude name=".git/" />
+        <exclude name=".gitignore" />
+        <include name="**/*" />
+    </fileset>
+
+    <!-- Target: path                                               -->
+    <!-- initialisation des chemins pour les archives               -->
+
+    <target name="path">
+    	<echo msg="Initialisation des chemins" />
+    	<exec command="pwd" outputProperty="pwd" />
+    	<echo msg="${pwd}" />
+    	<exec command="basename ${pwd}" outputProperty="basename" />
+    	<echo msg="${basename}" />
+    	<exec command="dirname ${pwd}" outputProperty="dirname" />
+    	<echo msg="${dirname}" />   	   	
+    </target>
+
+    <!-- Target: install                                            -->
+    <!-- Création (et suppression si besoin) du repertoire cible    -->
+    <!-- Copie des fichiers vers le repertoire cible                -->
+
+    <target name="install" depends="reset, clean">
+        <echo msg="Début de l'installation" />
+                
+        <echo msg="Creation du repertoire ${dir_target}" />
+        <delete dir="${dir_target}" />
+        <mkdir  dir="${dir_target}" />
+                
+        <echo msg="Copie des fichier vers ${dir_target}" />
+        <copy todir="${dir_target}">
+            <fileset refid="file_source" />
+        </copy>
+
+        <echo msg="Fin de l'installation" />
+    </target>
+
+    <!-- Target: tar                                                -->
+    <!-- Création d'une archive tar.gz                              -->
+
+    <target name="tar" depends="reset, clean, path">
+    	<echo msg="Création de l'archive Tar" />
+    	<exec command="tar cfz /tmp/${basename}.tar.gz ${basename}" dir="${dirname}" />
+    	<exec command="mv /tmp/${basename}.tar.gz ${dir_source}" />
+    </target>
+
+    <!-- Target: zip                                                -->
+    <!-- Création d'une archive zip                                 -->
+    
+    <target name="zip" depends="reset, clean, path">
+    	<echo msg="Création de l'archive Zip" />
+    	<exec command="zip -r /tmp/${basename}.zip ${basename}" dir="${dirname}" />
+    	<exec command="mv /tmp/${basename}.zip ${dir_source}" />
+    </target>
+
+    <!-- Target: reset                                              -->
+    <!-- Reset de la sandbox                                        -->
+    <!-- Purge de la base de données                                -->
+    <!-- Purge des repertoires web/upload et web/cache              -->
+    
+    <target name="reset">
+    	<echo msg="Purge de la base de données" />
+    	<exec command="cd divers/outils; php database.php" /> 
+    	<echo msg="Purge du répertoire web/cache" />
+    	<exec command="rm -f web/cache/*" />
+    	<echo msg="Purge du répertoire web/upload" />
+    	<exec command="rm -f web/upload/*" />
+    	<exec command="rm -f web/upload/foo/*" /> 
+    </target>
+    
+    <!-- Target: clean                                              -->
+    <!-- Nettoyage de la sandbox                                    -->
+    <!-- Purge des fichiers .DS_Store, ._*, *.bak, ~* et Thumbs.db  -->
+    
+    <target name="clean" depends="path">
+    	<echo msg="Suppression des fichiers .DS_Store" />
+    	<exec command="find ./ -type f | grep .DS_Store | xargs rm" />
+    	<echo msg="Suppression des fichiers ._*" />
+    	<exec command="find . -iname '._*' | xargs rm" /> 
+    	<echo msg="Suppression des fichiers *.bak" />
+    	<exec command="find . -iname '*.bak' | xargs rm" /> 
+    	<echo msg="Suppression des fichiers ~*" />
+	<exec command="find . -iname '~*' | xargs rm" />
+	<echo msg="Suppression des fichiers *~" />
+	<exec command="find . -iname '*~' | xargs rm" />
+    	<echo msg="Suppression des fichiers Thumbs.db" />
+    	<exec command="find ./ -type f | grep Thumbs.db | xargs rm" />
+    	<echo msg="Suppression des archives eventuelles" />
+    	<delete file="${dir_source}/${basename}.zip" />
+    	<delete file="${dir_source}/${basename}.tar.gz" />
+    </target>
+    
+    <!-- Target: cloc                                               -->
+    <!-- Count Line Of Code                                         -->
+    
+    <target name="cloc" depends="reset, clean">
+    	<echo msg="Count Line Of Code" />
+    	<exec command="cloc --exclude-dir=divers ${dir_source}" logoutput="true" />
+    </target>
+
+    <!-- Target: phpcpd                                             -->
+    <!-- PHP Copy Paste Detector                                    -->    
+    
+    <target name="phpcpd">
+        <echo msg="PHP Copy Paste Detector..." />
+        <exec command="phpcpd --exclude divers ${dir_source}" logoutput="true" />
+    </target>
+    
+    <!-- Target: phpdcd                                             -->
+    <!-- PHP Dead Code Detector                                     -->    
+    
+    <target name="phpdcd">
+        <echo msg="PHP Dead Code Detector..." />
+        <exec command="phpdcd --exclude divers ${dir_source}" logoutput="true" />
+    </target>
+            
+</project>

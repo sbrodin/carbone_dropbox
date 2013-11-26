@@ -1,0 +1,65 @@
+CARBONE - Licence d'utilisation
+
+Article 1 :
+
+CARBONE est un framework (cadre d'applications ou cadriciel) conçu et développé
+par la société GLOBALIS media systems. Il est composé d'un ensemble de
+bibliothèques (classes et fonctions) et d'une documentation en facilitant la 
+prise en main.
+
+Utiliser CARBONE revient à en reprendre le code source comme socle pour
+développer des logiciels prêts à l'emploi. 
+
+Article 2 :
+
+GLOBALIS concède les droits d'utilisation et de modification de CARBONE et de 
+sa documentation dans le cadre du logiciel pour lequel il a été retenu ainsi 
+que ses éventuelles extensions. Par la suite, ce logiciel peut être installé, 
+utilisé et même distribué à votre convenance, modulo les restrictions 
+suivantes :
+
+- la documentation de CARBONE ne peut en aucun cas être distribuée, vendue ou 
+fournie gratuitement à un tiers sans accord explicite de notre part,
+- le code source de CARBONE ne peut être distribué, vendu ou fourni 
+gratuitement à un tiers qu'en tant que partie d'un logiciel prêt à l'emploi,
+- les droits d'utilisation et de modification de CARBONE sont limités au 
+logiciel pour lequel il a été retenu ainsi que ses éventuelles extensions,
+- lors de modification de CARBONE ou de sa documentation, les références à 
+GLOBALIS doivent impérativement être conservées en l'état. 
+
+Article 3 :
+
+GLOBALIS reste le seul propriétaire de CARBONE et de sa documentation.
+
+Article 4 :
+
+Aucune garantie n'est fournie. GLOBALIS fournit CARBONE et sa documentation en 
+l'état, sans aucune sorte de garantie explicite ou implicite, y compris les 
+garanties de commercialisation ou d'adaptation dans un but particulier. Vous 
+assumez tous les risques quant à la qualité et aux éventuels effets indésirables 
+ou inattendus. Si CARBONE est défectueux, vous assurez le coût de tous les 
+services, corrections ou réparations nécessaires.
+
+GLOBALIS ne pourra être tenu pour responsable de tout dommage direct, indirect, 
+secondaire ou accessoire (pertes financières dues au manque à gagner, à 
+l'interruption d'activités ou à la perte de données, etc.) découlant de 
+l'utilisation de CARBONE et sa documentation ou de l'impossibilité d'utiliser 
+celui-ci.
+
+Article 5 :
+
+L'ensemble du présent texte doit être présent sur l'ensemble des logiciels 
+développés à l'aide CARBONE sous la forme d'un fichier licence.txt placé à la 
+racine de l'applicatif.
+
+Article 6 :
+
+Si vous utilisez CARBONE, GLOBALIS media systems se réserve la possibilité de 
+communiquer à ce sujet sur son site internet www.globalis-ms.com et sur sa 
+lettre d'informations.
+
+GLOBALIS media systems 
+6bis, rue Auguste Vitu - 75015 Paris 
+Tél. : 01 82 83 51 70 
+Fax : 01 82 83 51 71
+Mail : armel.fauveau@globalis-ms.com 
